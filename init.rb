@@ -8,10 +8,13 @@ Redmine::Plugin.register :redmine_issue_open_date do
   name 'Redmine Issue Open Date plugin'
   url 'https://github.com/centosadmin/redmine_issue_open_date'
   description 'This is a plugin for Redmine which open freezed issues with specified oped date'
-  version '0.0.1'
+  version '0.0.2'
   author 'Centos-admin.ru'
   author_url 'http://centos-admin.ru'
-  settings(default: {'freezed_statuses' => []},
+  settings(default: {
+    'freezed_statuses' => IssueStatus.where(is_closed: true).pluck(:id).map(&:to_s),
+    'open_status' => IssueStatus.sorted.first.id.to_s
+                    },
            partial: 'settings/issue_open_date')
 
 end

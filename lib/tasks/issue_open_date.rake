@@ -7,7 +7,9 @@ namespace :issue_open_date do
 
     Issue.where(status_id: freezed_status_ids, open_date: Date.today).find_each do |issue|
       LOG.debug issue.inspect
-      issue.update status_id: open_status_id
+      issue.init_journal(User.current)
+      issue.status_id = open_status_id
+      issue.save
     end
 
   end

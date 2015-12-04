@@ -1,6 +1,9 @@
-<% if issue.safe_attribute? 'open_date' %>
+<% if issue.safe_attribute? 'open_date' and
+      Setting.plugin_redmine_issue_open_date['freezed_statuses'].include?(issue.status_id.to_s) %>
+
   <p id="open_date_area">
     <%= form.text_field(:open_date, :size => 10, :required => issue.required_attribute?('open_date')) %>
     <%= calendar_for('issue_open_date') if issue.leaf? %>
   </p>
+
 <% end %>

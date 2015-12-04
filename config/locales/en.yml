@@ -3,4 +3,4 @@ en:
   issue_open_date:
     freezed_statuses: 'Freezed statuses'
     open_status: 'Open with status'
-
+    required: "You need to choose statuses in both sections"
