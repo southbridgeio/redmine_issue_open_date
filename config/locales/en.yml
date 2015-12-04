@@ -1,4 +1,6 @@
 en:
+  field_open_date: Open date
   issue_open_date:
     freezed_statuses: 'Freezed statuses'
     open_status: 'Open with status'
+

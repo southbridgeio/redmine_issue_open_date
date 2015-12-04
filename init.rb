@@ -1,3 +1,7 @@
+require 'redmine'
+require_dependency 'issue_open_date/hook_listener'
+require_dependency 'issue_open_date/patches/issue_patch'
+
 Redmine::Plugin.register :redmine_issue_open_date do
   name 'Redmine Issue Open Date plugin'
   url 'https://github.com/centosadmin/redmine_issue_open_date'
