@@ -1,0 +1,30 @@
+<div class="box tabular settings">
+  <h4><%= t 'issue_open_date.freezed_statuses' %></h4>
+<ul class="inline-checkboxes">
+  <% IssueStatus.find_each do |status| %>
+    <li>
+      <%= check_box_tag 'settings[freezed_statuses][]', status.id,
+                        @settings['freezed_statuses'].include?(status.id.to_s) %>
+      <label><%= status.name %></label>
+    </li>
+
+  <% end %>
+</ul>
+  </div>
+<div class="box tabular settings">
+  <h4><%= t 'issue_open_date.open_status' %></h4>
+<ul class="inline-checkboxes">
+  <% IssueStatus.find_each do |status| %>
+    <li>
+      <%= radio_button_tag 'settings[open_status]', status.id,
+                        @settings['open_status'] == status.id.to_s %>
+      <label><%= status.name %></label>
+    </li>
+
+  <% end %>
+</ul>
+</div>
+
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'issue_open_date', plugin: 'redmine_issue_open_date' %>
+<% end %>

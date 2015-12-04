@@ -1,3 +1,4 @@
-# English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+  issue_open_date:
+    freezed_statuses: 'Freezed statuses'
+    open_status: 'Open with status'

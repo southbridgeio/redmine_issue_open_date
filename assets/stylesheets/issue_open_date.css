@@ -1,0 +1,8 @@
+ul.inline-checkboxes li {
+    display: inline-block;
+}
+
+.tabular.settings ul.inline-checkboxes li label {
+    margin-left: 0;
+    float: none;
+}
