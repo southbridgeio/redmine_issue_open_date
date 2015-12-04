@@ -1,3 +1,5 @@
+FileUtils.mkdir_p(Rails.root.join('log/issue_open_date')) unless Dir.exist?(Rails.root.join('log/issue_open_date'))
+
 require 'redmine'
 require_dependency 'issue_open_date/hook_listener'
 require_dependency 'issue_open_date/patches/issue_patch'
