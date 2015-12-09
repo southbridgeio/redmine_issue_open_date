@@ -9,6 +9,7 @@ namespace :issue_open_date do
       LOG.debug issue.inspect
       issue.init_journal(User.current)
       issue.status_id = open_status_id
+      issue.open_date = nil
       issue.save
     end
 
