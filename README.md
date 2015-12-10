@@ -4,35 +4,36 @@
 
 Plugin developed by [Centos-admin.ru](http://centos-admin.ru/).
 
-This plugin is designed to open the frozen issues on the scheduled day.
+This plugin is designed to reopen the frozen issues on the scheduled day.
 
 ## Short description
 
-At 00:01 executed `rake issue_open_date:switch`.
+Plugin executes the 'rake issue_open_date:switch' command at 00:01.
 
-Fetches all issues with a status of _**frozen**_, the opening date that is set for the current day.
+It will return all the tickets that have the _**Frozen**_ status and scheduled to be reopened on the next day.
 
-For each issue status will be put _**open**_.
+All such tickets will get the _**New**_ status.
 
 ## Plugin setup
 
-After installing the plugin, you must run the database migration:
+Install the plugin and perform database migration:
 
 ```
 bundle exec rake redmine:plugins:migrate
 ```
 
-Setup **_Frozen_** and **_Open_** statuses in plugin settings.
+Specify in the plugin settings which tickets will be considered as _**New**_ or _**Frozen**_.
+
 
 ## CRON
 
-To add a daily task in CRON:
+Perform this to add tasks to CRON:
 
 ```
 bundle exec whenever -i redmine_issue_open_date -f plugins/redmine_issue_open_date/config/schedule.rb
 ```
 
-To clean CRON:
+Perform this to remove tasks from CRON:
 
 ```
 bundle exec whenever -c redmine_issue_open_date -f plugins/redmine_issue_open_date/config/schedule.rb
