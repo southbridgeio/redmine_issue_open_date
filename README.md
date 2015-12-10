@@ -14,8 +14,6 @@ Fetches all issues with a status of _**frozen**_, the opening date that is set f
 
 For each issue status will be put _**open**_.
 
-"Frozen" and "Open" statuses is setup in the plugin settings.
-
 ## Plugin setup
 
 After installing the plugin, you must run the database migration:
