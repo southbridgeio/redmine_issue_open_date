@@ -1,38 +1,40 @@
-# redmine_issue_open_date
+# Redmine Issue Open Date Plugin
 
-Плагин разработан [Centos-admin.ru](http://centos-admin.ru/).
+*[Русская версия документации](README.ru.md)*
 
-Плагин предназначен для открытия замороженных задач в назначенный день.
+Plugin developed by [Centos-admin.ru](http://centos-admin.ru/).
 
-## Алгоритм работы
+This plugin is designed to open the frozen issues on the scheduled day.
 
-В 00:01 выполнится `rake issue_open_date:switch`.
+## Short description
 
-Сделается выборка всех задач со статусом "Заморожена", дата открытия которых установлена на текущий день.
+At 00:01 executed `rake issue_open_date:switch`.
 
-Для каждой задачи будет выставлен статус открытой.
+Fetches all issues with a status of _**frozen**_, the opening date that is set for the current day.
 
-Статусы "Замороженной" и "Открытой" задачи выбираются в настройках плагина.
+For each issue status will be put _**open**_.
 
-## Установка и настройка плагина
+"Frozen" and "Open" statuses is setup in the plugin settings.
 
-После установки плагина необходимо запустить миграции для базы данных:
+## Plugin setup
+
+After installing the plugin, you must run the database migration:
 
 ```
 bundle exec rake redmine:plugins:migrate
 ```
 
-В настойках плгина укажите задачи с какими статусами считать "Замороженным", с каким - "Открытой".
+Setup **_Frozen_** and **_Open_** statuses in plugin settings.
 
 ## CRON
 
-Для добавления ежедневной задачи в CRON:
+To add a daily task in CRON:
 
 ```
 bundle exec whenever -i redmine_issue_open_date -f plugins/redmine_issue_open_date/config/schedule.rb
 ```
 
-Для очистки CRON:
+To clean CRON:
 
 ```
 bundle exec whenever -c redmine_issue_open_date -f plugins/redmine_issue_open_date/config/schedule.rb
