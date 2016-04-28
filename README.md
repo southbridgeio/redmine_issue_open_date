@@ -6,6 +6,8 @@ Plugin developed by [Centos-admin.ru](http://centos-admin.ru/).
 
 This plugin is designed to reopen the frozen issues on the scheduled day.
 
+Please help us make this plugin better telling us of any [issues](https://github.com/centosadmin/redmine_issue_open_date/issues) you'll face using it. We are ready to answer all your questions regarding this plugin.
+
 ## Short description
 
 Plugin executes the 'rake issue_open_date:switch' command at 00:01.
