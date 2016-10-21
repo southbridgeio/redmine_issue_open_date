@@ -2,7 +2,7 @@
 
 *[Русская версия документации](README.ru.md)*
 
-Plugin developed by [Centos-admin.ru](http://centos-admin.ru/).
+Plugin is developed by [Centos-admin.ru](http://centos-admin.ru/).
 
 This plugin is designed to reopen the frozen issues on the scheduled day.
 
@@ -10,7 +10,7 @@ This plugin is designed to reopen the frozen issues on the scheduled day.
 
 Plugin executes the 'rake issue_open_date:switch' command at 00:01.
 
-It will return all the tickets that have the _**Frozen**_ status and scheduled to be reopened on the next day.
+It will return all the tickets that have the _**Frozen**_ status and are scheduled to be reopened on the next day.
 
 All such tickets will get the _**New**_ status.
 
