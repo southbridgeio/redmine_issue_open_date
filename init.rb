@@ -12,8 +12,8 @@ Redmine::Plugin.register :redmine_issue_open_date do
   author 'Centos-admin.ru'
   author_url 'http://centos-admin.ru'
   settings(default: {
-    'freezed_statuses' => IssueStatus.where(is_closed: true).pluck(:id).map(&:to_s),
-    'open_status' => IssueStatus.sorted.first.id.to_s
+    'freezed_statuses' => [],
+    'open_status' => []
                     },
            partial: 'settings/issue_open_date')
 
