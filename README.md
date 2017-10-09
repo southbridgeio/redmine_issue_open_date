@@ -1,3 +1,5 @@
+[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine_issue_open_date)
+
 # Redmine Issue Open Date Plugin
 
 *[Русская версия документации](README.ru.md)*
@@ -40,4 +42,3 @@ Perform this to remove tasks from CRON:
 ```
 bundle exec whenever -c redmine_issue_open_date -f plugins/redmine_issue_open_date/config/schedule.rb
 ```
-
