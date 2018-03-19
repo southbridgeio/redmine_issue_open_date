@@ -4,7 +4,7 @@
 
 *[Русская версия документации](README.ru.md)*
 
-Plugin is developed by [Centos-admin.ru](http://centos-admin.ru/).
+Plugin is developed by [Southbridge](https://southbridge.io).
 
 This plugin is designed to reopen the frozen issues on the scheduled day.
 
