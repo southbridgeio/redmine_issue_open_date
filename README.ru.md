@@ -4,7 +4,7 @@
 
 *[English version](README.md)*
 
-Плагин разработан [Centos-admin.ru](http://centos-admin.ru/).
+Плагин разработан [Southbridge](https://southbridge.io).
 
 Плагин предназначен для открытия замороженных задач в назначенный день.
 
