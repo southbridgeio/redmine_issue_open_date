@@ -4,11 +4,11 @@ module IssueOpenDate
       base.class_eval do
         unloadable
 
-        safe_attributes 'open_date',
-                        if: lambda { |issue, user| user.allowed_to?(:edit_issues, issue.project) }
-
-
         before_save :clear_open_date
+
+        def open_date
+          super.in_time_zone(User.current.time_zone) if super
+        end
 
         private
 
