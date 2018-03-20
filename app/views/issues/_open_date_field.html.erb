@@ -3,7 +3,8 @@
 
   <p id="open_date_area">
     <%= form.label :open_date %>
-    <%= form.datetime_select :open_date, include_blank: true, default: nil, minute_step: 5 %>
+    <% current_time = Time.now %>
+    <%= form.datetime_select :open_date, default: current_time - (current_time.min % 5).minutes, minute_step: 5 %>
   </p>
 
 <% end %>
