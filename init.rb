@@ -3,6 +3,7 @@ FileUtils.mkdir_p(Rails.root.join('log/issue_open_date')) unless Dir.exist?(Rail
 require 'redmine'
 require_dependency 'issue_open_date/hook_listener'
 require_dependency 'issue_open_date/patches/issue_patch'
+require_dependency 'issue_open_date/patches/user_patch'
 
 Redmine::Plugin.register :redmine_issue_open_date do
   name 'Redmine Issue Open Date plugin'
