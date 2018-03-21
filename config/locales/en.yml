@@ -1,6 +1,6 @@
 en:
   field_open_date: Open date
-  field_issue_open_time: Issue close time
+  field_issue_open_time: Issue open time
   issue_open_date:
     freezed_statuses: 'Freezed statuses'
     open_status: 'Open with status'
