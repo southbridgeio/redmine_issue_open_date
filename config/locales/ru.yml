@@ -1,5 +1,6 @@
 ru:
   field_open_date: Открыть заново
+  field_issue_open_time: Время закрытия задач
   issue_open_date:
     freezed_statuses: 'Статус "Заморожена"'
     open_status: 'Открывать со статусом'
