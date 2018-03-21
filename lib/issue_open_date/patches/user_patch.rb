@@ -14,7 +14,7 @@ User.send(:prepend,
           tomorrow = Date.tomorrow
           super ? super.change(year: tomorrow.year, month: tomorrow.month, day: tomorrow.day) : tomorrow.to_time
         end
-      time.in_time_zone(time_zone)
+      time_zone ? time.to_datetime.change(offset: time_zone.formatted_offset) : time.to_datetime
     end
   end
 )

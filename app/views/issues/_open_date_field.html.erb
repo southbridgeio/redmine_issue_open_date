@@ -3,7 +3,6 @@
 
   <p id="open_date_area">
     <%= form.label :open_date %>
-    <% current_time = Time.now %>
     <%= form.datetime_select :open_date, { default: User.current.issue_open_time , minute_step: 5 }, style: 'width: auto' %>
   </p>
 
