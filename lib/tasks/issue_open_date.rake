@@ -1,17 +1,15 @@
 namespace :issue_open_date do
   task :switch => :environment do
-    log = Rails.env.production? ? Logger.new(Rails.root.join('log/issue_open_date', 'switch-task.log')) : Logger.new(STDOUT)
+    IssueOpenWorker.new.perform
+  end
 
-    freezed_status_ids = Setting.plugin_redmine_issue_open_date['freezed_statuses'] || []
-    open_status_id = Setting.plugin_redmine_issue_open_date['open_status']
-
-    Issue.where('status_id IN(?) AND open_date <= ?', freezed_status_ids, Time.now).find_each do |issue|
-      log.debug issue.inspect
-      issue.init_journal(User.current)
-      issue.status_id = open_status_id
-      issue.open_date = nil
-      issue.save
+  namespace :sidekiq do
+    task init: :environment do
+      unless Gem.loaded_specs.key?('sidekiq-cron')
+        puts 'sidekiq-cron not found!'
+        next
+      end
+      Sidekiq::Cron::Job.create(name: 'issue_open_job', cron: '*/5 * * * *', class: 'IssueOpenWorker')
     end
-
   end
 end
