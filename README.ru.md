@@ -30,14 +30,28 @@ bundle exec rake redmine:plugins:migrate
 
 ## CRON
 
+Плагин поддерживает 2 способа запуска задачи по расписанию:
+
+### Whenever
+
 Для добавления ежедневной задачи в CRON:
 
 ```
-bundle exec whenever -i redmine_issue_open_date -f plugins/redmine_issue_open_date/config/schedule.rb
+bundle exec whenever -i redmine_issue_open_date -f *путь к приложению*/plugins/redmine_issue_open_date/config/schedule.rb
 ```
 
 Для очистки CRON:
 
 ```
-bundle exec whenever -c redmine_issue_open_date -f plugins/redmine_issue_open_date/config/schedule.rb
+bundle exec whenever -c redmine_issue_open_date -f *путь к приложению*/plugins/redmine_issue_open_date/config/schedule.rb
 ```
+
+### Sidekiq-cron
+
+Запустите для добавления задачи в sidekiq-cron:
+
+```
+bundle exec rake issue_open_date:sidekiq:init RAILS_ENV=production
+```
+
+Для работы в этом случае необходим gem [sidekiq-cron](https://github.com/ondrejbartas/sidekiq-cron).

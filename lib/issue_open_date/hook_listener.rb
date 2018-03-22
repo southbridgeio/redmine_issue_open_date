@@ -6,7 +6,7 @@ class IssueOpenDateHookListener < Redmine::Hook::ViewListener
   def controller_issues_edit_before_save(context = {})
     return unless User.current.allowed_to?(:edit_issues, context[:issue].project)
 
-    Time.use_zone(User.current.time_zone) do
+    Time.use_zone(User.current.time_zone || Time.now.localtime.utc_offset / 3600) do
       context[:issue].assign_attributes(context[:params][:issue].slice(*(1..5).map { |i| "open_date(#{i}i)" }))
     end
   end
