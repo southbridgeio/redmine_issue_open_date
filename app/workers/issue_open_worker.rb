@@ -9,7 +9,7 @@ class IssueOpenWorker
 
     Issue.where('status_id IN(?) AND open_date <= ?', freezed_status_ids, Time.now).find_each do |issue|
       log.debug issue.inspect
-      issue.init_journal(User.current)
+      issue.init_journal(User.anonymous)
       issue.status_id = open_status_id
       issue.open_date = nil
       issue.save
