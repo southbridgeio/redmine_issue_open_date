@@ -1,0 +1,4 @@
+<p>
+  <%= label :user, :issue_open_time, l(:field_issue_open_time) %>
+  <%= form.time_select :issue_open_time, { minute_step: 5, include_blank: true }, style: 'width: auto' %>
+</p>

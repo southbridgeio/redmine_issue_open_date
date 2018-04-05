@@ -3,12 +3,13 @@ FileUtils.mkdir_p(Rails.root.join('log/issue_open_date')) unless Dir.exist?(Rail
 require 'redmine'
 require_dependency 'issue_open_date/hook_listener'
 require_dependency 'issue_open_date/patches/issue_patch'
+require_dependency 'issue_open_date/patches/user_patch'
 
 Redmine::Plugin.register :redmine_issue_open_date do
   name 'Redmine Issue Open Date plugin'
   url 'https://github.com/centosadmin/redmine_issue_open_date'
   description 'This is a plugin for Redmine which open freezed issues with specified oped date'
-  version '0.1.3'
+  version '0.2.0'
   author 'Southbridge'
   author_url 'https://southbridge.io'
   settings(default: {

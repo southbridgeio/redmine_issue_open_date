@@ -31,14 +31,28 @@ Specify in the plugin settings which tickets will be considered as _**New**_ or 
 
 ## CRON
 
+Plugin supports two ways of scheduling jobs:
+
+### Whenever
+
 Perform this to add tasks to CRON:
 
 ```
-bundle exec whenever -i redmine_issue_open_date -f plugins/redmine_issue_open_date/config/schedule.rb
+bundle exec whenever -i redmine_issue_open_date -f *path_to_your_app*/plugins/redmine_issue_open_date/config/schedule.rb
 ```
 
 Perform this to remove tasks from CRON:
 
 ```
-bundle exec whenever -c redmine_issue_open_date -f plugins/redmine_issue_open_date/config/schedule.rb
+bundle exec whenever -c redmine_issue_open_date -f *path_to_your_app*/plugins/redmine_issue_open_date/config/schedule.rb
 ```
+
+### Sidekiq-cron
+
+Run this task to inititalize sidekiq-cron job:
+
+```
+bundle exec rake issue_open_date:sidekiq:init RAILS_ENV=production
+```
+
+Note that you need to have [sidekiq-cron](https://github.com/ondrejbartas/sidekiq-cron) gem installed.

@@ -1,10 +1,19 @@
 <% if User.current.allowed_to?(:edit_issues, @project) &&
       Setting.plugin_redmine_issue_open_date['freezed_statuses'].include?(issue.status_id.to_s) %>
+  <style type="text/css">
+    #open_date_area select {
+      width: auto;
+    }
+  </style>
 
   <p id="open_date_area">
     <%= form.label :open_date %>
-    <% current_time = Time.now %>
-    <%= form.datetime_select :open_date, default: current_time - (current_time.min % 5).minutes, minute_step: 5 %>
+    <span style="display: inline-block;">
+      <%= form.date_select :open_date, default: User.current.issue_open_time , minute_step: 5 %>
+    </span>
+    <span style="display: inline-block;">
+      <%= form.time_select :open_date, default: User.current.issue_open_time , minute_step: 5, ignore_date: true %>
+    </span>
   </p>
 
 <% end %>
