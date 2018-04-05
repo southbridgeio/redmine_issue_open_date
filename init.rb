@@ -9,7 +9,7 @@ Redmine::Plugin.register :redmine_issue_open_date do
   name 'Redmine Issue Open Date plugin'
   url 'https://github.com/centosadmin/redmine_issue_open_date'
   description 'This is a plugin for Redmine which open freezed issues with specified oped date'
-  version '0.1.3'
+  version '0.2.0'
   author 'Southbridge'
   author_url 'https://southbridge.io'
   settings(default: {
