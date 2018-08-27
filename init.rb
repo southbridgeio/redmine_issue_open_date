@@ -5,7 +5,7 @@ require_dependency 'issue_open_date/hook_listener'
 require_dependency 'issue_open_date/patches/issue_patch'
 require_dependency 'issue_open_date/patches/user_patch'
 
-workers_path = File.dirname(__FILE__) + "/app/#{workers}"
+workers_path = File.dirname(__FILE__) + "/app/workers"
 ActiveSupport::Dependencies.autoload_paths += [workers_path]
 Rails.application.config.eager_load_paths += [workers_path]
 
