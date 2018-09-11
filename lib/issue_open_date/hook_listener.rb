@@ -12,6 +12,10 @@ class IssueOpenDateHookListener < Redmine::Hook::ViewListener
     assign_issue_attributes(context)
   end
 
+  def controller_issues_new_before_save(context = {})
+    assign_issue_attributes(context)
+  end
+
   private
 
   def assign_issue_attributes(context)
