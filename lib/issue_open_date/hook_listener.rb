@@ -19,8 +19,9 @@ class IssueOpenDateHookListener < Redmine::Hook::ViewListener
   private
 
   def assign_issue_attributes(context)
+    params, issue = context[:params].to_unsafe_h, context[:issue]
     Time.use_zone(User.current.time_zone || Time.now.localtime.utc_offset / 3600) do
-      context[:issue].assign_attributes(context[:params][:issue].slice(*(1..5).map { |i| "open_date(#{i}i)" }))
+      issue.assign_attributes(params[:issue].slice(*(1..5).map { |i| "open_date(#{i}i)" }))
     end
   end
 end
