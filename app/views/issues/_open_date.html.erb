@@ -1,3 +1,5 @@
-<%= issue_fields_rows do |rows|
+<% if issue.open_date %>
+  <%= issue_fields_rows do |rows|
     rows.right l(:field_open_date), format_time(issue.open_date), :class => 'due-date'
-end %>
+  end %>
+<% end %>
