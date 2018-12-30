@@ -9,10 +9,10 @@
   <p id="open_date_area">
     <%= form.label :open_date %>
     <span style="display: inline-block;">
-      <%= form.date_select :open_date, default: User.current.issue_open_time , minute_step: 5 %>
+      <%= form.date_select :open_date, default: User.current.suggested_issue_open_time , minute_step: 5 %>
     </span>
     <span style="display: inline-block;">
-      <%= form.time_select :open_date, default: User.current.issue_open_time , minute_step: 5, ignore_date: true %>
+      <%= form.time_select :open_date, default: User.current.suggested_issue_open_time , minute_step: 5, ignore_date: true %>
     </span>
   </p>
 

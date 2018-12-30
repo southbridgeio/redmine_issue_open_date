@@ -9,10 +9,10 @@
   <p id="open_date_area">
     <%= label_tag t('field_open_date') %>
     <span style="display: inline-block;">
-      <%= date_select :issue, :open_date, default: User.current.issue_open_time , minute_step: 5 %>
+      <%= date_select :issue, :open_date, default: User.current.suggested_issue_open_time , minute_step: 5 %>
     </span>
     <span style="display: inline-block;">
-      <%= time_select :issue, :open_date, default: User.current.issue_open_time , minute_step: 5, ignore_date: true %>
+      <%= time_select :issue, :open_date, default: User.current.suggested_issue_open_time , minute_step: 5, ignore_date: true %>
     </span>
   </p>
 
