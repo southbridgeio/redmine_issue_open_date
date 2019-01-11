@@ -20,6 +20,8 @@ class IssueOpenDateHookListener < Redmine::Hook::ViewListener
 
   def assign_issue_attributes(context)
     params, issue = context[:params].to_unsafe_h, context[:issue]
+    return unless Setting.plugin_redmine_issue_open_date['freezed_statuses'].include?(issue.status_id.to_s)
+
     Time.use_zone(User.current.time_zone || Time.now.localtime.utc_offset / 3600) do
       issue.update(params[:issue].slice(*(1..5).map { |i| "open_date(#{i}i)" }))
     end
