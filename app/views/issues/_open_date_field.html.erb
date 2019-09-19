@@ -1,5 +1,10 @@
 <% if User.current.allowed_to?(:edit_issues, @project) &&
       Setting.plugin_redmine_issue_open_date['freezed_statuses'].include?(issue.status_id.to_s) %>
+  <%= stylesheet_link_tag 'jquery.datetimepicker.min', plugin: 'redmine_issue_open_date' %>
+  <%= javascript_include_tag 'jquery.datetimepicker.full.min', plugin: 'redmine_issue_open_date' %>
+  <%= javascript_include_tag 'issue_open_date', plugin: 'redmine_issue_open_date' %>
+
+
   <style type="text/css">
     #open_date_area select {
       width: auto;
@@ -8,10 +13,7 @@
 
   <p id="open_date_area">
     <span style="display: inline-block;">
-      <%= form.date_select :open_date, default: User.current.suggested_issue_open_time , minute_step: 5 %>
-    </span>
-    <span style="display: inline-block;">
-      <%= form.time_select :open_date, default: User.current.suggested_issue_open_time , minute_step: 5, ignore_date: true %>
+      <%= form.text_field :open_date, value: (issue.open_date || User.current.suggested_issue_open_time).strftime('%d.%m.%Y %H:%M'), class: 'datetimepicker' %>
     </span>
   </p>
 
