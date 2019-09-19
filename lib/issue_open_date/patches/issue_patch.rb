@@ -5,7 +5,6 @@ module IssueOpenDate
         unloadable
 
         before_save :clear_open_date
-        # around_save :use_current_user_time_zone
 
         safe_attributes :open_date
 
@@ -25,10 +24,6 @@ module IssueOpenDate
           if self.open_date.present? and !self.closed?
             self.open_date = nil
           end
-        end
-
-        def use_current_user_time_zone
-          Time.use_zone(User.current.time_zone || Time.now.localtime.utc_offset / 3600) { yield }
         end
       end
     end
