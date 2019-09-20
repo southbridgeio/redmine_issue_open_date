@@ -14,7 +14,7 @@ module IssueOpenDate
 
         def open_date=(value)
           user = User.current
-          return super unless user.logged? && user.time_zone
+          return super unless value && user.logged? && user.time_zone
           super(value.to_datetime.change(offset: user.time_zone.formatted_offset))
         end
 
