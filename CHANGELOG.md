@@ -1,3 +1,7 @@
+# 0.3.1
+
+* Add compatibility with Redmine 5.1
+
 # 0.3.0
 
 * Add support for bulk-edit

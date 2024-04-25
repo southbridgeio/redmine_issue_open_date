@@ -1,9 +1,9 @@
 FileUtils.mkdir_p(Rails.root.join('log/issue_open_date')) unless Dir.exist?(Rails.root.join('log/issue_open_date'))
 
 require 'redmine'
-require_dependency 'issue_open_date/hook_listener'
-require_dependency 'issue_open_date/patches/issue_patch'
-require_dependency 'issue_open_date/patches/user_patch'
+require_dependency File.dirname(__FILE__) + '/lib/issue_open_date/hook_listener'
+require_dependency File.dirname(__FILE__) + '/lib/issue_open_date/patches/issue_patch'
+require_dependency File.dirname(__FILE__) + '/lib/issue_open_date/patches/user_patch'
 
 workers_path = File.dirname(__FILE__) + "/app/workers"
 ActiveSupport::Dependencies.autoload_paths += [workers_path]
