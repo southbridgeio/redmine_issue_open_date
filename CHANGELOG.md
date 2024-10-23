@@ -1,3 +1,7 @@
+# 0.3.2
+
+* Add datetimepicker
+
 # 0.3.1
 
 * Add compatibility with Redmine 5.1
