@@ -12,6 +12,7 @@
   </style>
 
   <p id="open_date_area">
+    <%= label_tag 'open_date', t('field_open_date') %>
     <span style="display: inline-block;">
       <%= form.text_field :open_date, value: (issue.open_date || User.current.issue_open_time).strftime('%d.%m.%Y %H:%M'), class: 'datetimepicker' %>
     </span>
