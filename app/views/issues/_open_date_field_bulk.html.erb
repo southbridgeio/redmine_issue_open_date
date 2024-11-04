@@ -1,18 +1,20 @@
 <% if @projects.all? { |project| User.current.allowed_to?(:edit_issues, project) } &&
-    Setting.plugin_redmine_issue_open_date['freezed_statuses'].include?(@issue_params[:status_id]) %>
+  Setting.plugin_redmine_issue_open_date['freezed_statuses'].include?(@issue_params[:status_id]) %>
+
+  <%= stylesheet_link_tag 'jquery.datetimepicker.min', plugin: 'redmine_issue_open_date' %>
+  <%= javascript_include_tag 'jquery.datetimepicker.full.min', plugin: 'redmine_issue_open_date' %>
+  <%= javascript_include_tag 'issue_open_date', plugin: 'redmine_issue_open_date' %>
+
   <style type="text/css">
-    #open_date_area select {
-      width: auto;
-    }
+      #open_date_area select {
+          width: auto;
+      }
   </style>
 
   <p id="open_date_area">
-    <%= label_tag t('field_open_date') %>
+    <%= label_tag 'open_date', t('field_open_date') %>
     <span style="display: inline-block;">
-      <%= date_select :issue, :open_date, default: User.current.issue_open_time , minute_step: 5 %>
-    </span>
-    <span style="display: inline-block;">
-      <%= time_select :issue, :open_date, default: User.current.issue_open_time , minute_step: 5, ignore_date: true %>
+      <%= text_field_tag 'issue[open_date]', (issues.map(&:open_date).first || User.current.issue_open_time).strftime('%d.%m.%Y %H:%M'), class: 'datetimepicker' %>
     </span>
   </p>
 
