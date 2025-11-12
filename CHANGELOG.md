@@ -1,3 +1,7 @@
+# 0.3.3
+
+* Add compatibility with Redmine 6.1
+
 # 0.3.2
 
 * Add datetimepicker
