@@ -4,8 +4,6 @@ module IssueOpenDate
       def self.included(base)
         # :nodoc:
         base.class_eval do
-          unloadable
-
           before_save :clear_open_date
 
           safe_attributes :open_date
