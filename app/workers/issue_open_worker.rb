@@ -9,10 +9,23 @@ class IssueOpenWorker
 
     Issue.where('status_id IN(?) AND open_date <= ?', freezed_status_ids, Time.now).find_each do |issue|
       log.debug issue.inspect
-      issue.init_journal(User.anonymous)
-      issue.status_id = open_status_id
-      issue.open_date = nil
-      issue.save
+
+      # Retry on StaleObjectError (issue was modified by another process)
+      retries = 0
+      begin
+        issue.reload if retries > 0
+        issue.init_journal(User.anonymous)
+        issue.status_id = open_status_id
+        issue.open_date = nil
+        issue.save
+      rescue ActiveRecord::StaleObjectError => e
+        retries += 1
+        if retries <= 3
+          retry
+        else
+          log.error "Failed to save issue #{issue.id} after 3 retries: #{e.message}"
+        end
+      end
     end
   end
 end
